@@ -1,0 +1,1 @@
+Cloned<Filter<std::slice::Iter<'_, CrimeIncident>, {closure@src/load_and_clean.rs:47:17: 47:27}>>
