@@ -1,5 +1,3 @@
-//use crate::data_processing::CrimeData;
-
 #[derive(Debug, Clone)]
 pub struct Point {
     pub x: f64,

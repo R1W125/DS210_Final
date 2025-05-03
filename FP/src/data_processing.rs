@@ -17,7 +17,7 @@ pub fn process_data(line: &str) -> Option<CrimeData> {
         return None;
     }
 
-    // Check if we have enough columns
+    // Check num columns
     if parts.len() < 21 {
         return None;
     }
@@ -27,10 +27,9 @@ pub fn process_data(line: &str) -> Option<CrimeData> {
     let longitude = f64::from_str(parts[19].trim()).ok()?;
     let victim_sex = parts[14].trim().to_string();
     let victim_race = parts[15].trim().to_string();
-    let borough = parts[3].trim().to_string();
 
     // Skip if any required field is empty
-    if victim_sex.is_empty() || victim_race.is_empty() || borough.is_empty() {
+    if victim_sex.is_empty() || victim_race.is_empty() {
         return None;
     }
 

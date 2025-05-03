@@ -206,7 +206,7 @@ pub fn plot_complete_visualization(clusters: &[Cluster]) -> Result<(), Box<dyn s
         chart.draw_series(std::iter::once(
             Text::new(
                 format!("Cluster {} ({})", i, cluster.points.len()),
-                (cluster.centroid.x, cluster.centroid.y + 0.01),
+                (cluster.centroid.x, cluster.centroid.y + 0.05),
                 ("sans-serif", 15).into_font().color(&color),
             )
         ))?;

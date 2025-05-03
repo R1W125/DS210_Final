@@ -53,17 +53,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
     }
 
-    // Print race statistics
-    println!("\nVictim Race Statistics:");
-    println!("----------------------");
-    for (race, count) in &race_counts {
-        println!("{}: {}", race, count);
-    }
 
-    // Perform k-means clustering
+    // k-means clustering
     let clusters = k_means(&all_points, 5, 100);
 
-    // Generate all visualizations
+    // Generate all graaphs
     plot_borough_boundaries()?;
     plot_all_points(&all_points)?;
     plot_centroids_with_boroughs(&clusters)?;
@@ -77,6 +71,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     for (i, cluster) in clusters.iter().enumerate() {
         println!("Cluster {}: {} points", i, cluster.points.len());
         println!("Centroid: ({:.6}, {:.6})", cluster.centroid.x, cluster.centroid.y);
+    }
+
+    // Print race statistics
+    println!("\nVictim Race Statistics:");
+    println!("----------------------");
+    for (race, count) in &race_counts {
+        println!("{}: {}", race, count);
     }
 
     Ok(())
@@ -118,7 +119,7 @@ mod tests {
 
     #[test]
     fn test_visualization_functions() {
-        // Test that visualization functions don't panic
+        // Panic Testing
         assert!(plot_borough_boundaries().is_ok());
         
         let test_points = vec![
