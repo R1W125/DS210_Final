@@ -1,3 +1,7 @@
+//This module is used to visualize the data
+// It will be used to generate all the graphs
+
+
 use plotters::prelude::*;
 use plotters::coord::types::RangedCoordf64;
 use crate::k_means_cluster::{Cluster, Point};
@@ -74,6 +78,7 @@ fn draw_boroughs<DB: DrawingBackend>(chart: &mut ChartContext<DB, Cartesian2d<Ra
     Ok(())
 }
 
+// Plots the borough boundaries
 pub fn plot_borough_boundaries() -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new("borough_boundaries.png", PLOT_RES).into_drawing_area();
     root.fill(&WHITE)?;
@@ -97,6 +102,7 @@ pub fn plot_borough_boundaries() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
+// Plots all the points
 pub fn plot_all_points(points: &[Point]) -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new("all_points.png", PLOT_RES).into_drawing_area();
     root.fill(&WHITE)?;
@@ -125,6 +131,7 @@ pub fn plot_all_points(points: &[Point]) -> Result<(), Box<dyn std::error::Error
     Ok(())
 }
 
+// Plots the centroids with the borough boundaries
 pub fn plot_centroids_with_boroughs(clusters: &[Cluster]) -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new("centroids.png", PLOT_RES).into_drawing_area();
     root.fill(&WHITE)?;
@@ -167,6 +174,7 @@ pub fn plot_centroids_with_boroughs(clusters: &[Cluster]) -> Result<(), Box<dyn 
     Ok(())
 }
 
+// Plots the complete visualization
 pub fn plot_complete_visualization(clusters: &[Cluster]) -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new("complete_visualization.png", PLOT_RES).into_drawing_area();
     root.fill(&WHITE)?;
@@ -217,6 +225,7 @@ pub fn plot_complete_visualization(clusters: &[Cluster]) -> Result<(), Box<dyn s
     Ok(())
 }
 
+// Plots the points by sex  
 pub fn plot_by_sex(points: &[Point], victim_sex: &str) -> Result<(), Box<dyn std::error::Error>> {
     let filename = format!("{}_victims.png", victim_sex.to_lowercase());
     let root = BitMapBackend::new(&filename, PLOT_RES).into_drawing_area();

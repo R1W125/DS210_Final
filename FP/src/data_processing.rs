@@ -1,7 +1,9 @@
+//This module is used to process the data
+
 use std::str::FromStr;
 
-
 #[derive(Debug, Clone)]
+// CrimeData struct contains the latitude, longitude, victim sex, and victim race
 pub struct CrimeData {
     pub latitude: f64,
     pub longitude: f64,
@@ -9,6 +11,7 @@ pub struct CrimeData {
     pub victim_race: String,
 }
 
+// Takes in a line of data and returns a CrimeData struct
 pub fn process_data(line: &str) -> Option<CrimeData> {
     let parts: Vec<&str> = line.split(',').collect();
     

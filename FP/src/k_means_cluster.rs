@@ -1,21 +1,27 @@
+//This module is used to perform k-means clustering
+
+// Point struct contains the latitude and longitude
 #[derive(Debug, Clone)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
 }
 
+// Cluster struct contains the centroid and the points
 #[derive(Debug)]
 pub struct Cluster {
     pub centroid: Point,
     pub points: Vec<Point>,
 }
 
+// Calculates the distance between two points
 impl Point {
     fn distance(&self, other: &Point) -> f64 {
         ((self.x - other.x).powi(2) + (self.y - other.y).powi(2)).sqrt()
     }
 }
 
+// Performs k-means clustering
 pub fn k_means(points: &[Point], k: usize, max_iterations: usize) -> Vec<Cluster> {
     if points.is_empty() || k == 0 {
         return Vec::new();

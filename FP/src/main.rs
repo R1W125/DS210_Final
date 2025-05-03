@@ -1,3 +1,7 @@
+//This module is the main module that will be used to run the program
+// It will be used to read the data, process the data, and generate the visualizations
+// It will also be used to test the program
+
 use std::error::Error;
 use std::fs::File;
 use std::io::{self, BufRead};
